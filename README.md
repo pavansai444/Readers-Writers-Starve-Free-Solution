@@ -47,7 +47,9 @@ This is like pcb of a process. It stores the pid, status and pointer to next pro
 ```cpp
 enum State{active,blocked}; //This is the process state
 class process_node{
+
     int pid;
+public:
     process_node* next;
     State state;
     process_node(int p_id){
