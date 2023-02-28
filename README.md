@@ -13,7 +13,7 @@ The following pseudocode presents better insight of the solution. This pseudocod
 This implementation of major classes used for the solution is given below:
 ### Generic Queue
 ```cpp
-template<type T>
+template<typename T>
 // This is the generic implementation of FIFO queue 
 class queue{ 
     T* front=NULL;
@@ -36,7 +36,7 @@ public:
     front=front->next;
     rear=(front==NULL)?NULL:rear;
 
-    return pid;
+    return p_id;
     }
 };
 ```
