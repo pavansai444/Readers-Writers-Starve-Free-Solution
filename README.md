@@ -98,7 +98,9 @@ int entry_count=0,exit_count=0;// These represent the number of readers entering
 semaphore read_entry=new seamphore(1);// used to update entry_count mutually exclusively.
 semaphore read_exit=new semaphore(1);// used to update  exit_count mutually exclusively.
 semaphore mutex_write=new semaphore(0);// used to perform write mutually exclusively
-bool writer=false;// This is used to indicate to readers in crititcal section that writer is waiting. the last reader leaving the critical section signals writer depending on this boolen. since we will signal only if writer is waiting.
+bool writer=false;// This is used to indicate to readers in crititcal section that writer is waiting. 
+//the last reader leaving the critical section signals writer depending on this boolen. 
+//since we will signal only if writer is waiting.
 ```
 
 ### Reader
