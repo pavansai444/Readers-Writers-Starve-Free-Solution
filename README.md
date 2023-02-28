@@ -16,7 +16,8 @@ This implementation of major classes used for the solution is given below:
 template<type T>
 // This is the generic implementation of FIFO queue 
 class queue{ 
-    T* front=NULL,rear=NULL;
+    T* front=NULL;
+    T* rear=NULL;
 public:
     void push(int p_id){ // used to add new member to the queue
         T* p=new T(p_id);// the process is in "blocked" state when initialised
