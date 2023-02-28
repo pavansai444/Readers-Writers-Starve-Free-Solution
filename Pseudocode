@@ -1,0 +1,38 @@
+Reader Pseudocode
+while(true){
+    int pid=new PID();// generating pid for this process
+
+    /* **ENTRY SECTION** */
+    read_entry.wait(pid);
+        entry_count++; // reader entering CS.
+    read_entry.signal();
+
+    /* **** CRITICAL SECTION**** */
+
+    read_exit.wait(pid);
+        exit_count++;// reader exiting CS.
+        if(waiting &&(read_entry==read_exit)){
+            mutex_write.signal();//last reader signals to writer that he can enter CS if a writer is waiting.
+        }
+    read_exit.signal();   
+    // ***REMAINDER SECTION***
+}
+
+Writer Pseudocode
+while(true){
+    int pid=new PID();// PID generation
+    /* ***ENTRY SECTION*** */
+    read_entry.wait(pid);//The writer is inserted into queue if he doesn't have resource access. the next processes will be after writer in queue.
+    read_exit.wait(pid);//The writer waits for last reader to exit CS. 
+    if(entry_count==exit_count){
+        read_exit.signal();// since next processes are in queue for entry. signalling read_exit will not lead to error even if we do it befor CS.        
+    }else{
+        waiting=true;
+        read_exit.signal();// allowing other readers to leave. no new reader enter CS.
+        mutex_write.wait(pid);//waiting for readers to exit.
+        read_exit.signal();
+    }
+    //**** CRITICAL SECTION ****
+    read_entry.signal();
+    // ***REMAINDER SECTION***
+}
