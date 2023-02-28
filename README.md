@@ -32,7 +32,8 @@ public:
     int pop(){// pops the front element the queue and returns its pid
     if(front==NULL)return -1;
     int p_id=front->pid; 
-    front->status=active; // This line is specific for this problem. status is the state of the process if its blocked then status is "blocked" and "active" if the process wakes up
+    front->status=active; // This line is specific for this problem.
+    //status is the state of the process if its blocked then status is "blocked" and "active" if the process wakes up
     front=front->next;
     rear=(front==NULL)?NULL:rear;
 
