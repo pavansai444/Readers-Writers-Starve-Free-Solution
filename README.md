@@ -12,7 +12,6 @@ The following pseudocode presents better insight of the solution. This pseudocod
 
 This implementation of major classes used for the solution is given below:
 ### Generic Queue
-A process enters this queue if it is waiting for its turn or resouces(semaphores).The processes that do not wait for other resouces(semaphores) don't enter this queue. 
 ```cpp
 template<type T>
 // This is the generic implementation of FIFO queue 
@@ -40,6 +39,7 @@ public:
     }
 };
 ```
+A process enters this queue if it is waiting for its turn or resouces(semaphores).The processes that do not wait for other resouces(semaphores) don't enter this queue. 
 when a process is inserted into this queue it is initialized with *blocked* as its default state. when popped out of the queue it becomes *active*. These are being used instead of syscalls block() and wake().
 
 ### Process_Node
