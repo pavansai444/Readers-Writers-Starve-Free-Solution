@@ -131,10 +131,12 @@ while(true){
 while(true){
     int pid=new PID();// PID generation
     /* ***ENTRY SECTION*** */
-    read_entry.wait(pid);//The writer is inserted into queue if he doesn't have resource access. the next processes will be after writer in queue.
+    read_entry.wait(pid);//The writer is inserted into queue if he doesn't have resource access. 
+    //the next processes will be after writer in queue.
     read_exit.wait(pid);//The writer waits for last reader to exit CS. 
     if(entry_count==exit_count){
-        read_exit.signal();// since next processes are in queue for entry. signalling read_exit will not lead to error even if we do it befor CS.        
+        read_exit.signal();// since next processes are in queue for entry. 
+        //signalling read_exit will not lead to error even if we do it befor CS.        
     }else{
         waiting=true;
         read_exit.signal();// allowing other readers to leave. no new reader enter CS.
