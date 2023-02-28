@@ -23,9 +23,9 @@ public:
         T* p=new T(p_id);// the process is in "blocked" state when initialised
         if(rear!=NULL){
             rear->next=p;
-            rear=p; // since p is added to the queue it becomes the rear member 
+            rear=p;  
         }else{
-            front=rear=p; // p is the first member to be inserted
+            front=rear=p; 
         }
     }
 
